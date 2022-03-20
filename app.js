@@ -1,7 +1,8 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
-const characterRoutes = require("./router/characterRoutes")
+const characterRoutes = require("./router/characterRoutes");
+const movieRoutes = require("./router/movieRoutes");
 require('dotenv').config()
 
 
@@ -11,7 +12,8 @@ app.use(cors());
 
 app.use(express.json());
 
-app.use('/characters', characterRoutes)
+app.use('/characters', characterRoutes);
+app.use('/movies', movieRoutes);
 
 
 
