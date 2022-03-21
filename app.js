@@ -3,6 +3,7 @@ const app = express();
 const cors = require('cors');
 const characterRoutes = require("./router/characterRoutes");
 const movieRoutes = require("./router/movieRoutes");
+const userRoutes = require("./router/userRoutes")
 require('dotenv').config()
 
 
@@ -14,6 +15,7 @@ app.use(express.json());
 
 app.use('/characters', characterRoutes);
 app.use('/movies', movieRoutes);
+app.use('/auth', userRoutes);
 
 
 
