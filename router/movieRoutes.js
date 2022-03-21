@@ -6,7 +6,8 @@ const {
    list,
    detail,
    edit,
-   gone
+   gone,
+   search
 
 } = require("../controllers/movies");
 
@@ -21,10 +22,11 @@ router.post('/create', add)
 //elimino pelicula
 router.delete('/:id', gone)
 //detalle de pelicula
-router.get('/:id', detail)
+router.get('/detail/:id', detail)
 
 //edito pelicula
 router.put('/:id', edit)
-
+//busco pelicula
+router.get('/?', search);
 
 module.exports= router;

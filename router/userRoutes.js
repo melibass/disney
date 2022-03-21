@@ -3,13 +3,14 @@ const router = require("express").Router();
 
 const {
     register, 
-    hola
-   // login 
+    login 
 } = 
     require("../controllers/auth");
 
-router.get('/hola',hola);
+//registro de nuevo usuario
 router.post('/register', register);
-//router.post('/login', login)
+
+//login de user
+router.post('/login', login)
 
 module.exports = router;

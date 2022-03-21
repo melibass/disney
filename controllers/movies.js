@@ -1,5 +1,6 @@
 const req = require('express/lib/request');
 const db = require('../models');
+const { Op } = require('sequelize');
 
 module.exports= {
 
@@ -134,6 +135,38 @@ module.exports= {
                     message: "We couldn't find a movie that matches the id given",
                 })
             }
-    }
+    },
+
+    search: async (req, res) => {
+       const movieMatched= await db.Movies.findAll({
+                include: ['Characters'],
+                where:{
+                    title: { [Op.like]:'%'+ req.query.keyword +'%'}
+                }
+            })
+            if (movieMatched) {
+                return res.status(200).json({
+                    meta: {
+                        status: 200,
+                        ok: true,
+                    },
+                    data: movieMatched,
+                });
+            } else {
+                return res.status(400).json({
+                    meta: {
+                        status: 400,
+                        ok: false
+                    },
+                    message: "We couldn't find a movie that matches the search"
+                })
+            }
+            }, catch (error) {
+            console.log(error)
+            },
+            
+            
+            
+            
 
 }
