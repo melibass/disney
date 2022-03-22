@@ -6,7 +6,8 @@ const {
     edit,
     gone,
     list,
-    detail
+    detail,
+    
 } = require("../controllers/characters");
 
 
@@ -14,6 +15,7 @@ const {
 router.post("/create", create);
 //lista de characters
 router.get('/', list)
+
 //detalle de character
 router.get('/:id', detail);
 //edito un personaje

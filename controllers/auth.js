@@ -1,8 +1,26 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
+// require("dotenv").config();
+// const sgMail= require("@sendgrid/mail");
 
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
+// const sendMail = async(req,res)=>{
+//     try{
+//         await sgMail.send(msg);
+//         console.log("msg sent");
+//     } catch(error){
+//     if (error.response)
+//         console.log(error.response.body);
+// }
+// };
+// sendMail({
+//     to: "melinabassano0@gmail.com",
+//     from: "mbassano@gmail.com",
+//     subject: "You have been subscribed",
+//     text: "Now you can access to the wonderful world of Disney"
+// })
 
 module.exports={
 

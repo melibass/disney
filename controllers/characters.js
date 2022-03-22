@@ -123,6 +123,25 @@ module.exports={
         }
     }, catch (error) {
         console.log(error)
+    },
+
+    search: async (req, res)=> {
+        let characterFound = req.query.name_char;
+
+        db.Characters.findAll({ name: name_char }, function(err, characterDB) {
+            if (err) {
+                return res.json({
+                    success: false,
+                    msj: 'No se encontró ningún cliente con ese correo',
+                    err
+                });
+            } else {
+                return res.json({
+                    success: true,
+                    character: characterFound
+                });
+            }
+        })
     }
     }
 

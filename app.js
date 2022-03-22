@@ -1,9 +1,12 @@
 const express = require('express');
 const app = express();
 const cors = require('cors');
+const swaggerUI = require("swagger-ui-express")
 const characterRoutes = require("./router/characterRoutes");
 const movieRoutes = require("./router/movieRoutes");
-const userRoutes = require("./router/userRoutes")
+const userRoutes = require("./router/userRoutes");
+const openApiConfiguration = require("./docs/swagger")
+
 require('dotenv').config()
 
 
@@ -12,6 +15,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cors());
 
 app.use(express.json());
+
+/**
+ * Definir ruta de documentacion
+ */
+app.use('/documentation', swaggerUI.serve, swaggerUI.setup(openApiConfiguration))
 
 app.use('/characters', characterRoutes);
 app.use('/movies', movieRoutes);
