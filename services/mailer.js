@@ -6,8 +6,8 @@ var transporter = createTransport({
     secure: true,
     
     auth: {
-      user: "mbassano@gmail.com",
-      pass: "dnasialqwahalsin",
+      user: process.env.USER_NODEMAILER,
+      pass: process.env.PASS_NODEMAILER,
     },
 });
 module.exports = { transporter };
