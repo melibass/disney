@@ -1,26 +1,9 @@
 const db = require("../models");
 const bcrypt = require("bcrypt");
 const { validationResult } = require("express-validator");
-// require("dotenv").config();
-// const sgMail= require("@sendgrid/mail");
+const { transporter } = require("../services/mailer")
+const { newJWT } = require("../helpers/newJWT")
 
-// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-
-// const sendMail = async(req,res)=>{
-//     try{
-//         await sgMail.send(msg);
-//         console.log("msg sent");
-//     } catch(error){
-//     if (error.response)
-//         console.log(error.response.body);
-// }
-// };
-// sendMail({
-//     to: "melinabassano0@gmail.com",
-//     from: "mbassano@gmail.com",
-//     subject: "You have been subscribed",
-//     text: "Now you can access to the wonderful world of Disney"
-// })
 
 module.exports={
 
@@ -45,8 +28,17 @@ module.exports={
             email,
             password: hash
             
-        } );
-        console.log(req.body)
+        } )
+        await transporter.sendMail({
+            from: "<mbassano@gmail.com>",
+            to: email,
+            subject: "Successful registration",
+            html: `
+            <div>
+              <h1>Thank you for subscribing! Hope you enjoy the wonderful world of Disney!</h1>
+            </div>
+            `,
+        });
              res.status(200).json({
                 meta: {
                   status: 200,
@@ -64,7 +56,7 @@ module.exports={
             meta: {
                 status: 404,
                 ok: false,
-                msg: "an error ocurred"
+                msg: "An error has ocurred"
             },
             data: error,
         })
@@ -87,12 +79,12 @@ module.exports={
                 });
             }
 
-            // Verify Password
+            // Check correct Password
             const validPass = bcrypt.compareSync(password, userToLogin.password);
             if (!validPass) {
                 return res.status(400).json({
                     ok: false,
-                    msg: "Password incorrect",
+                    msg: " The password entered is incorrect",
                 });
             }
 
@@ -104,7 +96,7 @@ module.exports={
             meta: {
                 status: 404,
                 ok: false,
-                msg: "an error ocurred"
+                msg: "An error has ocurred"
             },
             data: error,
         })

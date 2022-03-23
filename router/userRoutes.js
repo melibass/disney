@@ -23,9 +23,9 @@ const {
  *                      schema:
  *                          $ref: "#/components/schemas/registerUser"
  *          responses:
- *                  '201':
+ *                  '200':
  *                      description: El usuario se registra de manera correcta
- *                  '403':
+ *                  '404':
  *                      description: Error por validacion
  * 
  * 

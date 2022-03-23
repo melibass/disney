@@ -5,11 +5,11 @@ const newJWT = (email) => {
         const payload = { email };
 
         jwt.sign(payload, process.env.JWTPRIVATEKEY, {
-            expiresIn: '4h'
+            expiresIn: '8h'
         }, (err, token) => {
             if (err) {
                 console.log(err);
-                reject("We couldn't create the token thi time");
+                reject("We couldn't create the token this time");
             } else {
                 resolve(token);
             }
