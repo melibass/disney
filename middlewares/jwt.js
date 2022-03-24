@@ -1,22 +1,12 @@
 const jwt = require('jsonwebtoken');
 
-const newJWT = (email) => {
-    return new Promise((resolve, reject) => {
-        const payload = { email };
+const verifyJWT = (token) => new Promise((resolve, reject) => {
+  jwt.verify(token, process.env.SECRETORPRIVATEKEY, (err, authData) => {
+    if (err) {
+      reject(err);
+    }
+    resolve(authData);
+  });
+});
 
-        jwt.sign(payload, process.env.JWTPRIVATEKEY, {
-            expiresIn: '4h'
-        }, (err, token) => {
-            if (err) {
-                console.log(err);
-                reject("We couldn't create the token thi time");
-            } else {
-                resolve(token);
-            }
-        });
-    });
-}
-
-module.exports = {
-    newJWT
-}
+module.exports = verifyJWT;

@@ -87,7 +87,14 @@ module.exports={
                     msg: " The password entered is incorrect",
                 });
             }
+              //Create JWT
+              const token = await newJWT(userToLogin.email);
 
+              res.status(200).json({
+                  ok: true,
+                  msg: "User logged in",
+                  token,
+              });
     }
 
     catch (error) {

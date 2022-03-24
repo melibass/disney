@@ -27,6 +27,6 @@ router.get('/detail/:id', detail)
 //edito pelicula
 router.put('/:id', edit)
 //busco pelicula
-router.get('/?', search);
+router.get('/', search);
 
 module.exports= router;

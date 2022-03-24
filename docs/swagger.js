@@ -1,123 +1,45 @@
-const swaggerJsdoc = require("swagger-jsdoc");
+// const path = require('path');
 
-/**
- * API config
- */
-const swaggerDefinition = {
-    openapi: "3.0.0",
-    info: {
-        title: "Documentation for Disney Api with Node.js",
-        version: "1.0.0"
-    },
-    servers:[
-        {
-            url:"http://localhost:3000"
-        }
-    ],
-    components: {
-        securitySchemes:{
-            bearerAuth:{
-                type: "http",
-                scheme: "bearer"
-            }
-        },
-
-        schemas:{
-            registerUser:{
-                type:"object",
-            required:["name","email","password"],
-            properties: {
-                name:{
-                    type: "string"
-                },
-                email:{
-                    type:"string"
-                },
-                password:{
-                    type:"string"
-                }
-            }
-            },
-            listCharacters:{
-                type:"object",
-                required:["name_char","img_char",],
-                properties: {
-                    name_char:{
-                        type: "string"
-                    },
-                    img_char:{
-                        type:"string"
-                    },
-                    age:{
-                        type:"integer"
-                    },               
-                    weight:{
-                        type: "integer"
-                    },
-                    history: {
-                        type:"string"
-                    }
-                }
-                },
-                createCharacters:{
-                    type:"object",
-                required:["name_char","img_char",],
-                properties: {
-                    name_char:{
-                        type: "string"
-                    },
-                    img_char:{
-                        type:"string"
-                    },
-                    age:{
-                        type:"integer"
-                    },               
-                    weight:{
-                        type: "integer"
-                    },
-                    history: {
-                        type:"string"
-                    }
-                }
-                },
-                
-                loginUser:{
-                    type:"object",
-                required:["name","email","password"],
-                properties: {
-                    name:{
-                        type: "string"
-                    },
-                    email:{
-                        type:"string"
-                    },
-                    password:{
-                        type:"string"
-                    }
-                }
-                },
-            }
-           
-
-    }
-      
-
-    }
+// const configSwagger = {
+//   definition: {
+//     openapi: '3.0.0',
+//     info: {
+//       title: 'Disney API',
+//       description: 'Api for Disney Characters and Movies. Alkemy NODE Challenge',
+    
+//       license: {
+//         name: 'Apache 2.0',
+//         url: 'https://www.apache.org/licenses/LICENSE-2.0.html',
+//       },
+//       version: '1.0.0',
+//     },
+//     servers: [
+//       {
+//         url: 'http://localhost:3000',
+//         description: 'Server Local',
+//       },
+//     ],
+   
+//   },
+ 
 
 
-/**
- * opciones
- */
-const options = {
 
-    swaggerDefinition,
-    apis:[
-        "./routes/*.js"
-    ]
+// components: {
+//   securitySchemes:{
+//       bearerAuth:{
+//           type: "http",
+//           scheme: "bearer"
+//       }
+//   },
 
-}
+// }}
+// /**
+//  * opciones
+//  */
+//  const options = {
 
-const openApiConfiguration = swaggerJsdoc(options);
+//   // configSwagger,
+//   apis: [`${path.join(__dirname, '../docs/*.yml')}`],
 
-
-module.exports = openApiConfiguration;
+// }

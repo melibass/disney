@@ -7,6 +7,12 @@ const movieRoutes = require("./router/movieRoutes");
 const userRoutes = require("./router/userRoutes");
 const openApiConfiguration = require("./docs/swagger")
 
+// const { serve, setup } = require('swagger-ui-express');
+// const { configSwagger } = require('./docs/swagger');
+// const swaggerJSDocs = require('swagger-jsdoc')(configSwagger); 
+
+
+
 require('dotenv').config()
 
 
@@ -19,7 +25,7 @@ app.use(express.json());
 /**
  * Definir ruta de documentacion
  */
-app.use('/documentation', swaggerUI.serve, swaggerUI.setup(openApiConfiguration))
+// app.use('/documentation', serve, setup(swaggerJSDocs));
 
 app.use('/characters', characterRoutes);
 app.use('/movies', movieRoutes);

@@ -7,14 +7,14 @@ module.exports= {
    
     //agregar pelicula
     add: async (req,res) => {
-        const { name_char, age, history, img_char, weight, title, img_mov, release_date, rating } = req.body
+        const { name_char, age, history, img_char, weight, title, img_mov, release_date, rating, name_gr } = req.body
     const movie = await db.Movies.create({
         title,
         img_mov,
         release_date,
         rating,
         Genres: [{
-            
+            name_gr,
         }],
         Characters: [{
             name_char,
@@ -25,7 +25,7 @@ module.exports= {
         }]
     },
     {
-        include: ["Characters"] 
+        include: ["Characters", "Genres"] 
     }).catch(error=> console.log(error))
 
     return res.status(200).json({
